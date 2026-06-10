@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lawn Reality Check — Verandah Properties</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:wght@500;600;700&family=Jost:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#008C82;--teal-deep:#06605A;--gold:#D4AF50;--gold-soft:#E7D2A0;
+    --charcoal:#1A1A1A;--ink:#2A2A2A;--paper:#FBFAF6;--paper-2:#F3F0E7;
+    --line:#E2DDCF;--muted:#6E6A60;--pos:#2F7D5B;--warn:#B07A2E;--alarm:#A6492F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;font-size:16px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+
+  .masthead{background:radial-gradient(120% 130% at 85% -10%, rgba(212,175,80,.18), transparent 55%),linear-gradient(135deg, var(--charcoal) 0%, #11302E 60%, var(--teal-deep) 130%);color:#fff;padding:62px 0 54px;position:relative;overflow:hidden;}
+  .masthead::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--teal) 0%,var(--gold) 55%,var(--gold-soft) 100%);}
+  .brandline{font-family:'Jost',sans-serif;letter-spacing:.42em;text-transform:uppercase;font-size:11px;font-weight:400;color:var(--gold-soft);margin-bottom:26px;}
+  .eyebrow{font-family:'Jost',sans-serif;letter-spacing:.30em;text-transform:uppercase;font-size:11.5px;color:var(--gold);margin-bottom:14px;}
+  h1{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(34px,5.4vw,56px);line-height:1.05;letter-spacing:.005em;}
+  .sub-hd{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;color:#E8E5DC;margin-top:14px;font-style:italic;max-width:760px;}
+  .tagline{margin-top:30px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--gold-soft);border-left:2px solid var(--gold);padding-left:16px;max-width:720px;}
+
+  section{padding:50px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:24px;}
+  .sec-num{font-family:'Jost',sans-serif;font-weight:500;font-size:13px;color:var(--teal);letter-spacing:.18em;border:1px solid var(--teal);border-radius:2px;padding:3px 9px;white-space:nowrap;}
+  h2{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(24px,3.4vw,33px);color:var(--charcoal);line-height:1.12;}
+  h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:var(--teal-deep);margin:26px 0 8px;}
+  p{margin-bottom:14px;}
+  p.lead{font-size:18px;color:var(--ink);}
+  strong{font-weight:600;color:var(--charcoal);}
+  .pull{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:25px;line-height:1.32;color:var(--teal-deep);border-left:3px solid var(--gold);padding:6px 0 6px 22px;margin:26px 0;}
+
+  /* tidy vs healthy split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px;}
+  .split .col{border-radius:10px;padding:26px 26px 24px;border:1px solid var(--line);}
+  .split .tenant{background:#fff;}
+  .split .owner{background:linear-gradient(160deg,#0c4f49,var(--teal-deep));color:#EAF6F4;border-color:var(--teal-deep);}
+  .split .tag{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:11px;margin-bottom:4px;}
+  .split .tenant .tag{color:var(--muted);}
+  .split .owner .tag{color:var(--gold-soft);}
+  .split .role{font-family:'Playfair Display',serif;font-size:25px;font-weight:600;margin-bottom:14px;line-height:1.1;}
+  .split .tenant .role{color:var(--charcoal);}
+  .split .owner .role{color:#fff;}
+  .split ul{list-style:none;}
+  .split li{position:relative;padding-left:24px;margin-bottom:9px;font-size:15px;}
+  .split .tenant li::before{content:"✓";position:absolute;left:0;top:0;color:var(--muted);font-weight:700;}
+  .split .owner li::before{content:"✦";position:absolute;left:0;top:1px;color:var(--gold);}
+  .split .foot{margin-top:16px;font-size:13.5px;font-style:italic;}
+  .split .tenant .foot{color:var(--muted);}
+  .split .owner .foot{color:var(--gold-soft);}
+
+  /* numbered reasons */
+  .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+  .reason{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px;}
+  .reason .n{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--gold);line-height:1;}
+  .reason h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--teal-deep);margin:10px 0 6px;}
+  .reason p{font-size:14px;margin-bottom:0;}
+
+  /* big stat */
+  .stat-band{display:flex;flex-wrap:wrap;align-items:center;gap:24px;background:var(--paper-2);border-radius:10px;padding:28px 30px;margin:8px 0 22px;}
+  .stat-band .num{font-family:'Playfair Display',serif;font-weight:700;font-size:54px;color:var(--alarm);line-height:.95;white-space:nowrap;}
+  .stat-band .num small{display:block;font-size:14px;color:var(--muted);font-weight:400;font-family:'DM Sans',sans-serif;letter-spacing:.04em;margin-top:4px;}
+  .stat-band .txt{flex:1;min-width:240px;font-size:15.5px;}
+
+  .threat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px;}
+  .threat{background:#fff;border:1px solid var(--line);border-left:3px solid var(--alarm);border-radius:0 6px 6px 0;padding:15px 17px;}
+  .threat b{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--charcoal);display:block;margin-bottom:2px;}
+  .threat span{font-size:13px;color:var(--muted);}
+
+  /* proof checklist */
+  .proof{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 26px;margin-top:6px;}
+  .proof .row{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line);}
+  .proof .row:last-child{border-bottom:none;}
+  .proof .mark{font-family:'Playfair Display',serif;font-weight:700;color:var(--alarm);font-size:22px;line-height:1.2;}
+  .proof .row .body b{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--charcoal);font-weight:600;}
+  .proof .row .body p{font-size:14px;margin:3px 0 0;color:var(--ink);}
+
+  /* compare */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
+  .compare .box{border-radius:10px;padding:24px 24px;}
+  .compare .good{background:linear-gradient(160deg,#0c4f49,var(--teal-deep));color:#EAF6F4;}
+  .compare .bad{background:#fff;border:1px solid var(--line);}
+  .compare .lab{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:11px;margin-bottom:8px;}
+  .compare .good .lab{color:var(--gold-soft);}
+  .compare .bad .lab{color:var(--alarm);}
+  .compare .amt{font-family:'Playfair Display',serif;font-size:27px;font-weight:600;line-height:1.1;margin-bottom:10px;}
+  .compare .good .amt{color:#fff;}
+  .compare .bad .amt{color:var(--charcoal);}
+  .compare ul{list-style:none;}
+  .compare li{position:relative;padding-left:20px;margin-bottom:7px;font-size:14px;}
+  .compare .good li::before{content:"✦";position:absolute;left:0;color:var(--gold);}
+  .compare .bad li::before{content:"✕";position:absolute;left:0;color:var(--alarm);font-weight:700;}
+
+  .inc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:8px;}
+  .inc{background:var(--paper-2);border-radius:8px;padding:16px 14px;text-align:center;}
+  .inc .ico{font-size:20px;color:var(--teal);}
+  .inc b{display:block;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--charcoal);margin-top:6px;line-height:1.15;}
+
+  .handle-list{list-style:none;margin-top:6px;}
+  .handle-list li{position:relative;padding-left:26px;margin-bottom:11px;font-size:15.5px;}
+  .handle-list li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;background:var(--gold);transform:rotate(45deg);}
+
+  .note{background:var(--paper-2);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:18px 24px;margin:22px 0;}
+  .note .nh{font-family:'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:var(--teal-deep);margin-bottom:7px;}
+  .note p:last-child{margin-bottom:0;}
+
+  .cta{margin-top:14px;background:linear-gradient(135deg,var(--teal-deep),var(--teal));color:#fff;border-radius:12px;padding:38px 36px;text-align:center;}
+  .cta .k{font-family:'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:var(--gold-soft);}
+  .cta .big{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(28px,4vw,40px);margin:10px 0 6px;}
+  .cta .reply{display:inline-block;font-family:'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;font-size:13px;background:var(--gold);color:var(--charcoal);padding:13px 30px;border-radius:4px;margin-top:14px;font-weight:600;}
+  .cta .small{margin-top:18px;font-size:14px;color:#DCEEEB;max-width:620px;margin-left:auto;margin-right:auto;}
+
+  /* formal notice */
+  .formal{background:#fff;border:1.5px solid var(--charcoal);border-radius:10px;padding:30px 32px;margin-top:10px;position:relative;}
+  .formal::before{content:"Formal Notice";position:absolute;top:-12px;left:28px;background:var(--charcoal);color:#fff;font-family:'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;font-size:10.5px;padding:4px 12px;border-radius:3px;}
+  .formal h3{margin-top:6px;color:var(--charcoal);}
+  .formal p{font-size:15px;}
+
+  footer{background:var(--charcoal);color:#CFCBC0;padding:46px 0 38px;}
+  footer .f-brand{font-family:'Playfair Display',serif;color:#fff;font-size:24px;font-weight:600;}
+  footer .f-brand span{color:var(--gold);}
+  footer .f-tag{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-soft);font-size:18px;margin-top:4px;}
+  footer .f-formal{margin-top:20px;font-size:14px;color:#E4E0D6;font-style:italic;}
+  footer .f-meta{margin-top:16px;font-size:13px;color:#9C9789;line-height:1.7;}
+  .disclaimer{font-size:11.5px;color:#807B70;margin-top:22px;border-top:1px solid #333;padding-top:18px;line-height:1.6;}
+  a{color:var(--teal);}
+
+  @media (max-width:780px){
+    .split,.reasons,.compare{grid-template-columns:1fr;}
+    .threat-grid{grid-template-columns:1fr 1fr;}
+    .inc-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media print{
+    body{background:#fff;font-size:12px;}
+    .masthead{padding:40px 0 32px;}
+    section{padding:28px 0;}
+    .split .owner,.compare .good,.cta,.formal,.reason,.threat,.note{break-inside:avoid;}
+    a{color:var(--ink);text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="brandline">Verandah Properties&nbsp;&nbsp;·&nbsp;&nbsp;Curating Lake Nona's Finest Rental Portfolio</div>
+    <div class="eyebrow">Owner Advisory · Protecting Your Investment</div>
+    <h1>The Lawn Reality Check</h1>
+    <div class="sub-hd">Why basic mowing isn't enough — and why professional turf care is an owner-level responsibility in Florida.</div>
+    <div class="tagline">We protect your investment. A healthy lawn is part of that — and it begins with understanding who can actually be held accountable for it.</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 01 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01 · The Distinction</span></div>
+    <h2>There are two different jobs in lawn care — and they belong to two different people</h2>
+    <p class="lead">Most lawn disputes come from blurring one line. Keeping a lawn <em>tidy</em> and keeping a lawn <em>healthy</em> are not the same task, and they don't fall to the same person. Your tenant can be held to one. Only you can own the other.</p>
+
+    <div class="split">
+      <div class="col tenant">
+        <div class="tag">The Tenant's Job</div>
+        <div class="role">Keep it tidy</div>
+        <ul>
+          <li>Mow</li>
+          <li>Edge</li>
+          <li>Weedeat / string-trim</li>
+          <li>Blow debris</li>
+        </ul>
+        <div class="foot">These keep a lawn neat. They do not keep it alive.</div>
+      </div>
+      <div class="col owner">
+        <div class="tag">The Owner's Job</div>
+        <div class="role">Keep it healthy</div>
+        <ul>
+          <li>Fertilization</li>
+          <li>Weed control</li>
+          <li>Pest control</li>
+          <li>Disease treatment</li>
+          <li>Irrigation health &amp; ongoing monitoring</li>
+        </ul>
+        <div class="foot">Licensed, technical work — the part that actually keeps turf alive.</div>
+      </div>
+    </div>
+
+    <p class="pull">Your tenant keeps it tidy. You keep it healthy. Mowing a sick lawn just gives you a neatly-cut dead lawn.</p>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02 · The Hard Truth</span></div>
+    <h2>You can't put turf health on the tenant — even when the lease says so</h2>
+    <p>This is the part owners are most surprised by. Even when a lease assigns weed, pest, and fertilization duties to the tenant, <strong>Florida courts frequently treat that as an unreasonable burden and decline to enforce it against the renter.</strong> There are three reasons it rarely holds up:</p>
+
+    <div class="reasons">
+      <div class="reason">
+        <div class="n">1</div>
+        <h4>It's licensed work</h4>
+        <p>Done properly, chemical applications — fertilizer, pesticide, fungicide — are specialized and call for a licensed professional, not a renter with a spreader.</p>
+      </div>
+      <div class="reason">
+        <div class="n">2</div>
+        <h4>It's a diagnostic skill</h4>
+        <p>Telling chinch bugs from fungus from drought stress takes training. A tenant can't reasonably be expected to diagnose turf disease before it spreads.</p>
+      </div>
+      <div class="reason">
+        <div class="n">3</div>
+        <h4>It's outside their control</h4>
+        <p>Turf health turns on soil, irrigation design, weather, and the neighbors' yards — none of which a tenant governs.</p>
+      </div>
+    </div>
+
+    <h3>The principle: unconscionability</h3>
+    <p>Courts apply a simple idea: you can't contractually hand a <strong>technical, licensed responsibility</strong> to someone unqualified to perform it, and then hold them financially liable when it fails. So if the lawn dies and you bill the tenant, you are very likely to lose — and that lease clause won't save you.</p>
+    <p class="pull">A clause that won't hold up isn't protection. It's a false sense of security.</p>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03 · The Florida Factor</span></div>
+    <h2>Florida lawns die fast — often through no one's fault</h2>
+    <div class="stat-band">
+      <div class="num">48–72<small>HOURS</small></div>
+      <div class="txt">That's how quickly a Florida lawn can go from healthy to badly damaged. By the time the symptoms are visible, the damage is usually well advanced — and mowing can neither see it coming nor stop it.</div>
+    </div>
+    <div class="threat-grid">
+      <div class="threat"><b>Chinch bugs</b><span>Can brown out a lawn in days.</span></div>
+      <div class="threat"><b>Armyworms</b><span>Strip turf almost overnight.</span></div>
+      <div class="threat"><b>Fungal disease</b><span>Spreads silently through the soil.</span></div>
+      <div class="threat"><b>Irrigation imbalance</b><span>Too much or too little — both kill.</span></div>
+      <div class="threat"><b>Soil deficiency</b><span>Starves turf from underneath.</span></div>
+      <div class="threat"><b>Neighbor infestation</b><span>Arrives uninvited from next door.</span></div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04 · No Boundary Lines</span></div>
+    <h2>Your lawn doesn't respect property lines</h2>
+    <p class="lead">Even a well-kept lawn is exposed. Weeds spread from the yard next door. Pests migrate across property lines. Fungus travels through shared soil.</p>
+    <p>A tenant can't prevent any of that. Honestly, neither can we — no manager can stand guard over a lawn. The only thing that reliably holds the line is <strong>ongoing licensed chemical care</strong>, paired with periodic irrigation adjustments. It's preventive by design, which is the only thing that works against threats you can't see until it's too late.</p>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05 · The Burden of Proof</span></div>
+    <h2>Why owners rarely win lawn claims — and how a program protects you</h2>
+    <p>To charge a tenant for a declined lawn, you'd have to prove <strong>all three</strong> of the following. Without a professional turf program on file, you can't establish a single one:</p>
+
+    <div class="proof">
+      <div class="row"><div class="mark">1</div><div class="body"><b>The lawn was healthy at move-in.</b><p>No baseline, no documented starting condition — no proof.</p></div></div>
+      <div class="row"><div class="mark">2</div><div class="body"><b>The tenant specifically caused the decline.</b><p>With pests, fungus, and neighbor spread in play, you can't isolate the cause.</p></div></div>
+      <div class="row"><div class="mark">3</div><div class="body"><b>A professional inspection supports that finding.</b><p>No program means no professional record to point to.</p></div></div>
+    </div>
+
+    <p class="pull">A professional turf program isn't only lawn care. It's the baseline, the monitoring, and the paper trail that protect you if a dispute ever arises.</p>
+    <p>That reframes the whole question. The program is the very thing that creates your evidence — without it, a lawn dispute is a fight you walk into already unable to win.</p>
+  </section>
+
+  <!-- 06 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">06 · The Math</span></div>
+    <h2>The cheapest insurance you'll buy for the property</h2>
+    <p>A licensed turf program is a modest, predictable recurring cost. A failed lawn is a sudden one — and it rarely arrives alone.</p>
+    <div class="compare">
+      <div class="box good">
+        <div class="lab">Protect it</div>
+        <div class="amt">A modest monthly turf program</div>
+        <ul>
+          <li>Prevents most decline before it starts</li>
+          <li>Creates your documentation &amp; legal protection</li>
+          <li>Keeps the investment market-ready year-round</li>
+          <li>Predictable, budgetable cost</li>
+        </ul>
+      </div>
+      <div class="box bad">
+        <div class="lab">Or replace it</div>
+        <div class="amt">A full re-sod — often four figures</div>
+        <ul>
+          <li>Sudden, large, unbudgeted expense</li>
+          <li>Possible HOA fines stacking alongside</li>
+          <li>A tenant dispute you'll very likely lose</li>
+          <li>Vacancy risk if it delays remarketing</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:22px;">It costs far less to keep a lawn alive than to bring one back from the dead — and the program quietly does double duty as your risk protection the entire time.</p>
+  </section>
+
+  <!-- 07 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">07 · What's Included</span></div>
+    <h2>What a professional turf program covers</h2>
+    <div class="inc-grid">
+      <div class="inc"><div class="ico">✦</div><b>Fertilization</b></div>
+      <div class="inc"><div class="ico">✦</div><b>Weed control</b></div>
+      <div class="inc"><div class="ico">✦</div><b>Pest control</b></div>
+      <div class="inc"><div class="ico">✦</div><b>Disease treatment</b></div>
+      <div class="inc"><div class="ico">✦</div><b>Ongoing monitoring</b></div>
+    </div>
+    <div class="note">
+      <div class="nh">A common surprise</div>
+      <p>If your lawn looks "green" but is actually made up of weeds — which is very common — we'll let you know and walk you through the next steps. Green is not the same as healthy.</p>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">08 · When You Say Yes</span></div>
+    <h2>What Verandah handles for you</h2>
+    <ul class="handle-list">
+      <li>We coordinate everything with the licensed turf provider.</li>
+      <li>We notify your tenant — and keep their basic mow, edge, and trim duties firmly in place.</li>
+      <li>We document the program on file for your future legal protection.</li>
+      <li>If your "green" lawn is really weeds, we flag it and bring you next steps.</li>
+    </ul>
+    <p>You stay protected and informed; we handle the moving parts. That's the partnership.</p>
+  </section>
+
+  <!-- 09 CTA -->
+  <section>
+    <div class="cta">
+      <div class="k">Protect your investment</div>
+      <div class="big">Authorize your turf program</div>
+      <span class="reply">Reply&nbsp;&nbsp;“YES”</span>
+      <div class="small">If your HOA maintains your lawn, you can disregard this — you're already covered. And if your investment is being remarketed, this service should be in place before the next resident takes possession.</div>
+    </div>
+  </section>
+
+  <!-- 10 Formal Notice -->
+  <section>
+    <div class="formal">
+      <h3>HOA violations &amp; remediation — formal advance notice</h3>
+      <p>If your HOA issues any notice, violation, or requirement for lawn restoration, remediation, or correction, this serves as your formal advance notice that <strong>Verandah will charge your owner account for the corrective work</strong> needed to keep you in compliance.</p>
+      <p>HOAs are strict, fines escalate quickly, and violations often allow only a short window to correct the condition. Because Florida places the responsibility for major landscaping and turf health on the property owner — and because tenants cannot legally perform licensed chemical services — we are obligated to act immediately to protect you from mounting fines and legal exposure.</p>
+      <p>When a violation is received, we dispatch the appropriate vendor right away and charge the owner account for the remediation, always acting swiftly on your behalf to minimize penalties and prevent further deterioration.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">Verandah <span>Properties</span></div>
+    <div class="f-tag">The marriage, not the sprint.</div>
+    <div class="f-formal">This letter serves as your formal advisement and risk-mitigation notice. We are your partner — not an on-site groundskeeper. We respond quickly and professionally, but we cannot prevent natural turf decline. In Florida, turf health is a specialized, licensed, owner-level responsibility under both practical and legal standards.</div>
+    <div class="f-meta">White-glove property management for the Lake Nona &amp; Orlando corridor</div>
+    <div class="disclaimer">
+      This advisory reflects Verandah Properties' experience managing residential rental investments in Florida and general landlord-tenant principles; it is provided for owner education and is <strong>not legal advice</strong>. Outcomes in any lawn or lease dispute depend on the specific lease, facts, and circumstances, and laws and court interpretations vary and change. For advice on your particular situation or lease language, please consult a licensed Florida attorney. Cost references are general illustrations; actual program pricing and re-sodding costs vary by property and vendor.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
